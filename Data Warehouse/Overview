@@ -1,1 +1,57 @@
 
+What is a data warehouse - Business View
+  - You are head of ecommerce data infrastructure
+  - Business day to day work
+    > Customers: should be able to find good and create new orders
+    > Inventory: Staff should be able to stock, retrieve and reorder goods
+    > Delivery: Staff should be able to pickup and deliver goods
+    > HR: should be able to assess performance of staff
+    > Marketing: Should be able to attract new customers
+    > Management: Should be able to monitor sales growth
+
+  - Questions for you
+    > Can I build databases to support these activities?
+    > Are all above questions of same nature?
+
+Business Processes:
+Operational vs Analytical Business Processes
+  - Operational Process:
+    > Customers must be able to find products and make orders
+    > Inventory staff, add new products and check staff
+    > Delivery staff, pick up and deliver Products
+
+  - Analytical Processes:
+    > HR check sales performance
+    > Marketing see effect of different sales channel
+    > Management monitor sales growth
+    > Data team understand customer behavior
+
+Can we have same data source for operational and analytical process?
+  - Operational Db (MYSQL, POSTGRE SQL, other relational db)
+    > Excellent for operations
+    > No redundancy
+    > fast insert and update
+  - Analytical Db 
+    > Too slow for analytics (data is spread across different tables to maintain integrity)
+    > Too many joins
+    > Hard to understand
+
+Solution: Creating 2 processing nodes
+   1. OLTP: Online Transactional processing
+   2. OLAP: Online Analytical Processing
+
+Data warehouse is a system (including processes, technologies and data representations) that enables us to support analytical processes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
