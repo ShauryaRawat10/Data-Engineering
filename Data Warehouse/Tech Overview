@@ -13,7 +13,39 @@ DWs are central repositories of integrated data from one or more disparate sourc
 Dimension Model:
   1. Dimension model is designed to:
      > Make it easy for business users to work with data
-     > Improve analytical quesries performance
+     > Improve analytical queries performance
   2. Technologies used for storing dimensional models are different than tradional technologies
   3. Business users facing application such as visualization/dashboards needs clear visuals, aka business intelligence (BI) apps
+
+   3NF: The normalization of relational db makes it harder to do joins and work with different tables
+     - Lots of extensive joins
+     - Hard to explain to business users
+
+   Star schema: Fact-dimension model connected like a star
+             Good for OLAP not OLTP
+
+
+Facts and Dimensions:
+   1. Fact tables:
+      > Record business events like an order, a phone call, a book review
+      > Fact tables columns record events recorded in quantifiable metrics like quantity of an item, duration of a call, book rating
+   2. Dimension tables:
+      > Record context of the business events eg: who, what, where, why, etc
+      > Dimension tables columns contain attributes like the store at which an item is purchased, or the customer who made the call, etc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
