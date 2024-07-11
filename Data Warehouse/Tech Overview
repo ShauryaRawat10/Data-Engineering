@@ -1,0 +1,19 @@
+What is Data Warehouse - Technical View
+A data warehouse is a copy of transaction data specifically structured for query and analysis
+
+In computing, a data warehouse also known as enterprise data warehouse, is a system used for reporting and data analysis and is considered a core component of business intelligence.
+DWs are central repositories of integrated data from one or more disparate sources.
+
+   Data In      ----->     OLTP    ----->   ETL ---->   Dimension Model    ---->  EDW  ----->   Data Out
+                        (Postgre, 
+                          mysql, 
+                    other relational db)
+
+
+Dimension Model:
+  1. Dimension model is designed to:
+     > Make it easy for business users to work with data
+     > Improve analytical quesries performance
+  2. Technologies used for storing dimensional models are different than tradional technologies
+  3. Business users facing application such as visualization/dashboards needs clear visuals, aka business intelligence (BI) apps
+
