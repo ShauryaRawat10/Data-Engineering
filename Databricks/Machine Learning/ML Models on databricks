@@ -1,1 +1,46 @@
+Overview of Databricks:
+
+Databricks: 
+- An enterprise software company founded by the creators of Apache spark. The company has also created Delta Lake, MLFlow, Koalas, and all open
+source projects that span data engineering, data science, and machine learning
+- A cloud native platform for big data processing, machine learning, and analytics built using Data Lakehouse architecture
+
+- Databricks provides unified set of tools for enterprise-grade solutions
+- Tools for building, deploying, sharing and maintaining these solutions
+- Is clould native - manages and deploys cloud infrastructure on your behalf
+- Integrates with cloud storage and security in your cloud
+- Available on AWS, Azure, GCP
+
+Databricks Core tools:
+1. Apache Spark for big data processing
+2. Delta Lakes to allow ACID transactions, versioning on huge datasets (metadata on top of data lets you do ACID)
+3. SQL engine to run queries and build dashboards
+4. Popular ML tools for traditional and deep learning models
+
+Databricks provides the resources and tools needed to build and maintain Spark-based applications and also includes features to simplify business
+analytics and build ML pipelines
+
+
+Databricks Data Analytics platform  (3 personas/env)
+1. Databricks SQL: Platform for analysts to run SQL queries on data, create visualizations, share dashboards
+2. Databricks Data Science and Engineering: Interactive workspace for collaboration between data engineers, data science, and ML engineers to generate 
+   insights using spark
+3. Databricks ML: Integrated end-to-end machine learning environment with managed services for ML workflow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
