@@ -48,6 +48,68 @@ Automate Machine Learning:
 - Hyperopt: Uses the sparktrials class to simplify hyperparameter tuning by automating and distributing model tuning runs
 
 
+End to End Machine Learning Environment:
+
+  Data Preparation ---> Feature Store  --> Model Training  --->   Models ---->   Production
+  (Data Sources)        (Feature Store)    (AutoML)                              (Batch/Streaming Inference)
+  (Delta Tables)                           (Notebooks)                           (Online Serving endpoints)
+                                           (Experiments)
+
+  Data Preparation: Use Spark or native programming language libraries to connect to data sources
+                    Delta tables offers transaction support, version control, revision history for huge datasets
+  Feature Store: Feature table in feature store allows you to store processed features for model training and inference
+  Model training: Model training can be performed using custom code or with AutoML
+                  Track parameters and model using experiments with MLflow tracking
+  Models: Explore, register and serve model using model registry
+  Production: Deploy models to production and perform inference on batch as well as streaming data
+
+
+MLFlow:
+Open source platform for managing end-to-end machine learning lifecycle which includes model tracking, model registry
+model serving and inference.
+
+MLFlow Components:
+1. Model tracking
+2. Models
+3. Projects
+4. Model registry
+5. Model serving
+
+Model tracking:
+- API and UI for logging parameters, code versions, metrics and output files
+- Tracking lets you log and query experiments
+- Supported technologies and languages include Python, REST, R API and Java API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
