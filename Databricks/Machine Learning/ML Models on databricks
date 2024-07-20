@@ -28,6 +28,32 @@ Databricks Data Analytics platform  (3 personas/env)
 3. Databricks ML: Integrated end-to-end machine learning environment with managed services for ML workflow
 
 
+Databricks ML Runtime:
+- Automates the creation of cluster optimized for Machine Learning
+- Includes popular ML libraries:
+  -> scikit-learn
+  -> XGBoost
+  -> SparkML
+  -> Tensorflow
+  -> PyTorch
+- For training huge amount of data, includes support for distributed training libraries such as Horovod
+- Include tools to automate the model development process
+- Performs hyperparameter tuning to find the best model
+
+
+Automate Machine Learning:
+- AutoML: Automatically creates, tunes and evaluates model
+- Managed ML Flow: Manages end-to-end model lifecycle, including tracking experiment runs, deploying, registering
+                   and sharing model
+- Hyperopt: Uses the sparktrials class to simplify hyperparameter tuning by automating and distributing model tuning runs
+
+
+
+
+
+
+
+
 
 
 
