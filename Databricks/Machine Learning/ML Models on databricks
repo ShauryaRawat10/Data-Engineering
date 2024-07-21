@@ -80,6 +80,68 @@ Model tracking:
 - Tracking lets you log and query experiments
 - Supported technologies and languages include Python, REST, R API and Java API
 
+MLflow tracking concepts:
+- Experiment
+- Runs
+
+Experiments:
+- Primary unit of organization and access control for runs
+- Allows you to visualize, search for, and compare runs
+- Two types of experiments:
+  -> Workspace Experiment
+     - Belongs to workspace and not associated with notebook
+     - Runs in any notebook can use this experiment
+  -> Notebook experiment
+     - Associated with specific notebook
+     - Automatically created if there is no active experiment for a run
+
+Runs:
+- Single execution of model code
+- Contains the following info:
+  -> Notebook
+  -> Version
+  -> Start and End time
+  -> Metrics
+  -> tags
+  -> artifacts
+
+Models and Model Serving:
+- Manage and deploy models built using popular machine learning libraries
+- Supports multiple model serving and inference platform
+  -> Classic MLFlow model serving using REST endpoints
+  -> Serverless real time inferencing allows scalable REST endpoints
+
+Projects:
+- Package ML Code in a reusable and reproducible form
+- Allows sharing with other data scientists or transfers to production
+
+Model Registry:
+- Centralized model store where models can be registered and stored
+- Manage lifecycle stage transitions from staging to production
+- Allows versioning and annotation of models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
