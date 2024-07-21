@@ -120,6 +120,31 @@ Model Registry:
 - Manage lifecycle stage transitions from staging to production
 - Allows versioning and annotation of models
 
+***************************************************************************************************************************
+
+Scikit-learn:
+Easy to use, very comprehensive and efficient Python library for traditional ML model
+
+   -> Traditional ML Models:
+      - Have a fundamental algorithmic structure to solve problems
+      - The algorithm is fed data which trains the algorithm's parameters
+      - Algorithm parameter are called model parameter
+      - Eg: Regression model: Linear, Lasso, Ridge, Support vector regression (SVR)
+            Classification models: Naive Bayes, SVM's, Decision trees, Random forests
+            Dimensionality Reduction: Manifold learning, factor analysis
+            Clustering: K means, DBScan, Spectral clustering
+
+   -> Support for complete ML workflow:
+      - All common families of models supported
+      - Data pre-processing, cleaning, feature selection, and extraction
+      - Model validation and evaluation
+
+
+
+
+
+
+
 
 
 
