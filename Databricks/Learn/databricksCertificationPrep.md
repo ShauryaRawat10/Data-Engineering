@@ -6,4 +6,4 @@
 - Integrate git support using Repos
 
 ## Databricks Architecture and Services
-![Architecture](Databricks/Learn/Storage/WorkdpaceAndServices.png)
+![Architecture](https://github.com/ShauryaRawat10/Data-Engineering/blob/8f9b9d44c8e97473f7c9768f76d74442176b8634/Databricks/Learn/Storage/WorkdpaceAndServices.png)
