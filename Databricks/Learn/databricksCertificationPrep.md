@@ -28,11 +28,10 @@ Consist of backend services that databricks manages in its own cloud account ali
 though majority of data elements don't live here. Some elements notebook commands and workspace configuration are stored in control plane and enrypted at REST
 Through the control plane and the associated UI and APIs, it provides you the ability to launch clusters, start jobs and get results and interact with table metadata
 It has several services:
-1. Web APP: Serves databricks UI for you to access 
-         Has 3 services for various personas:
-         1. Data Science and Engineering Persona 
-         2. Machine Learning Persona
-         3. Databricks SQL Analyst Persona
+1. Web APP: Serves databricks UI for you to access. Has 3 services for various personas:
+         * Data Science and Engineering Persona 
+         * Machine Learning Persona
+         * Databricks SQL Analyst Persona
 2. Workflow Manager: Provides job workflows and delta live tables (DLT) to orchestrate tasks in n number of ways
 3. Cluster Manager: configure and setup spark clusters
 4. Jobs: Schedule tasks
