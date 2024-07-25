@@ -1,4 +1,4 @@
-## Data Engineering with Databricks
+# Data Engineering with Databricks
 - Core Components of Lakehouse platform
 - Data Science and Engineering workspace UI
 - Create and manage clusters using Cluster UI
@@ -35,7 +35,68 @@ It has several services:
 * Jobs: Schedule tasks
 * Unity Catalog: Provides data governance around access control, metadata management, data lineage, and data discovery
 
+#### Cluster:
+Databricks cluster is a set of computational resources and configuration on which you can run data engineering, data science and data analytics workloads.
+Run these workloads as set of commands in a notebook or as a job. 
+Cluster live in Data Plane within your organization cloud account. Although cluster management is a function of control plane.
 
+## Compute Resources:
+
+#### Clusters:
+Collection of VM instances
+Distributes workloads across workers
+
+In typical case a Cluster has a driver node alongside one or more Worker nodes. 
+Although Databricks provides a single node mode as well. Workloads are distributes across available Worker nodes by the driver. 
+Databricks provides 2 main types of Clusters:
+1. All-purpose clusters for interactive development
+2. Job Clusters for automating workloads
+
+#### Cluster Types:
+All-Purpose Cluster | Job Cluster 
+------------------- | -------------------
+Analyze data collaboratively using interactive notebooks | Run automated Jobs
+Create clusters from Workspace or API  |  The databricks job scheduler creates job clusters when running jobs
+Manually create or terminate All-purpose cluster | Databricks terminates it when job is complete. We can't restart it
+Multiple users can share All=purpose cluster | Job based
+Configuration information retained for up to 70 clusters for up to 30 days | Configuration information retained for up to 30 most recently terminated clusters
+
+#### Cluster Configuration:
+###### Cluster Mode:
+It is operating mode in which there are 2 option
+* Single Node Cluster
+  * Only one VM instance holding the driver, no worker instances in this configuration
+  * Low-cost single-instance cluster catering to single-node machine learning workloads and lightweight exploratory analysis
+* MultiNode Cluster (Standard Cluster)
+  * General purpose configuration consisting of Vm instances hosting the driver and atleast 1 additional instance for the worker
+  * Default mode for workloads developed in any supported language (requires at least 2 VM instances )
+
+
+#### Databricks Runtime Version:
+Runtime is a collection of core software components runnign on the cluster including Apache spark and many other components
+* Standard (common): Apache Spark and many other components and updates to provide an optimized big data analytics experiences
+* Machine Learning: Adds popular machine learning libraries like Tensorflow, keras, PyTorch, and XGBoost
+* Photon: An optional add-on to optimize SQL workloads
+For unity catalog connectivity, minimum required version is 10.1 with some featues requiring newer version
+
+#### Access Mode:
+Specifies overall security mode of the Cluster. For Standard version, only 4 options available with 2 for Unity catalog
+
+![Access Mode](https://github.com/ShauryaRawat10/Data-Engineering/blob/7da3c80a46bad9f001f08e9a0a64b3a2efc872cf/Databricks/Learn/Storage/Access_Mode_DE1.png)
+
+
+#### Cluster Policies
+Restricted Cluster creation can be achieved by using Policies. Cluster policy respresent a compromise between allowing users to create clusters in unrestricted manner
+and completely prohibiting them from creating clusters. Forcing them to request clusters through workspace admin
+
+
+
+#### Lab:
+1. Navigate to Compute
+![Compute_UI](https://github.com/ShauryaRawat10/Data-Engineering/blob/85d2c8c4bef3f55657f18ba9c8af819bb720fdb0/Databricks/Learn/Storage/Compute_UI_DE1.png)
+
+2. Create Cluster
+![create cluster](https://github.com/ShauryaRawat10/Data-Engineering/blob/85d2c8c4bef3f55657f18ba9c8af819bb720fdb0/Databricks/Learn/Storage/Cluster_UI_2_DE.png)
 
 
 
