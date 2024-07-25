@@ -13,29 +13,27 @@ that provides the performance and reliability of the datawarehouse, combined wit
 collaborative platform, providing the best of both worlds enables the variety of data practitioners like SQL analysts, data engineers and ML practitioners to perform their
 roles in a unified and scalable way. 
 
-Control Pane:
-
-
-Data Plane:
+#### Data Plane:
 Where your data is processed. All compute resource reside in your own cloud account. Data plane host compute resources that recall clusters
 They connect to the data store backing databricks file system and optionally provide connection to external data sources, either within the same cloud account or elsewhere
 on the internet for eg: JDBC or SQL datasource or datalake stored on S3, Azure blob storage or GCS
 1. Workspace Clusters
 2. SQL Warehouses
 
-Control Plane:
+#### Control Plane:
 Consist of backend services that databricks manages in its own cloud account align with the cloud service in use by the customer (Azure, AWS, GCP)
 though majority of data elements don't live here. Some elements notebook commands and workspace configuration are stored in control plane and enrypted at REST
 Through the control plane and the associated UI and APIs, it provides you the ability to launch clusters, start jobs and get results and interact with table metadata
 It has several services:
-1. Web APP: Serves databricks UI for you to access. Has 3 services for various personas:
-         * Data Science and Engineering Persona 
-         * Machine Learning Persona
-         * Databricks SQL Analyst Persona
-2. Workflow Manager: Provides job workflows and delta live tables (DLT) to orchestrate tasks in n number of ways
-3. Cluster Manager: configure and setup spark clusters
-4. Jobs: Schedule tasks
-5. Unity Catalog: Provides data governance around access control, metadata management, data lineage, and data discovery
+* Web APP: Serves databricks UI for you to access.
+ Has 3 services for various personas:
+  * Data Science and Engineering Persona 
+  * Machine Learning Persona
+  * Databricks SQL Analyst Persona
+* Workflow Manager: Provides job workflows and delta live tables (DLT) to orchestrate tasks in n number of ways
+* Cluster Manager: configure and setup spark clusters
+* Jobs: Schedule tasks
+* Unity Catalog: Provides data governance around access control, metadata management, data lineage, and data discovery
 
 
 
