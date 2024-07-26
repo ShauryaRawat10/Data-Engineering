@@ -99,6 +99,31 @@ and completely prohibiting them from creating clusters. Forcing them to request 
 ![create cluster](https://github.com/ShauryaRawat10/Data-Engineering/blob/85d2c8c4bef3f55657f18ba9c8af819bb720fdb0/Databricks/Learn/Storage/Cluster_UI_2_DE.png)
 
 
+#### Databricks Notebooks:
+Collaborative, reproducible and enterprise ready
+* Supports multi-language: Python, SQL, Scala, R and all in one Notebook
+* Real time co-presence, co-editing, and commenting
+* Ideal for exploration: Explore, visualize and summarize data with built in charts and data profiles
+* Adaptable: Install standard libraries and use local modules
+* Reproducible: Automatically track version history and use git version control with Repos
+* Get to production faster: Quickly schedule notebooks as jobs or create dashboards from their results, all in Notebook
+* Enterprise ready: Enterprise grade access controls, identity management and auditability
+
+###### Notebook magic commands
+Use to override default languages, run utilities/auxiliary commands, etc
+* %python, %r, %scala, %sql : Switch languages in a command cell
+* %sh: Run shell code (only runs on driver node, not worker nodes)
+* %fs: Shortcut for dbutils fielsystem commands
+* %md: Markdown for styling the display
+* %run: Execute a remote notebook from notebook
+* %pip: Install new Python libraries
+
+#### dbutils (Databricks Utilities)
+Perform various tasks with Databricks using Notebooks
+![dbutils](https://github.com/ShauryaRawat10/Data-Engineering/blob/68bed7afe23ceebf50aba8fefb9ea1869974df79/Databricks/Learn/Storage/dbutils_DE1.png)
+
+
+
 
 
 
