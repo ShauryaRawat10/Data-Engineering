@@ -123,6 +123,35 @@ Perform various tasks with Databricks using Notebooks
 ![dbutils](https://github.com/ShauryaRawat10/Data-Engineering/blob/68bed7afe23ceebf50aba8fefb9ea1869974df79/Databricks/Learn/Storage/dbutils_DE1.png)
 
 
+#### Databricks Repos:
+In databricks there is no immutable centralized history maintained. If we export notebook or copy it, history is lost. History can be deleted entirely by users.
+While you can revert changes and versions to the past, only basic operations are supported. You can not merge changes or create branches or name tags. No external integratiojn points to suppport CICD pipeline
+
+Databricks Repos through its GIT integration satisfies the first 2 of its requirements and addresses 3rd with its provided API
+GIT Versioning | CI/CD Integration | Enterprise ready
+---------------|-------------------|------------------
+Native integration with Github, gitlab, bitbucket, Azure devops | API surface to integrate with automation | Allow lists to avoid exfilteration
+UI-based workflows | Simplifies the dev/staging/prod multi-worksppace story | Secret detection to avoid leaking keys
+Azure devops, Gitlab, Github, Bitbucket | | 
+
+
+![Databaricks_Repos](https://github.com/ShauryaRawat10/Data-Engineering/blob/2f44b141a8020152a3bdea3c982762d6cdf59928/Databricks/Learn/Storage/DatabricksRepos_DE1.png)
+
+
+*******************************************************************************************************************************************************************************************************************
+
+# Transform Data with Spark
+
+Data Objects in Lakehouse: Databricks lakehouse architecture combines data stored with the delta lake protocol in cloud object storage. 
+![DataObjects](https://github.com/ShauryaRawat10/Data-Engineering/blob/6c3cc2341a9d0a3da5f96cf779d33079ef27dc57/Databricks/Learn/Storage/DataObjectsinLakehouse_DE1.png)
+
+Metadata: Metadata registered to this object. Under metastore there are 5 primary objects
+Catalog: Grouping of databases
+Schema: Grouping of Objects in catalog. Contains Table, View, Function. Table can be managed or unmanaged
+
+![ExternalTables](https://github.com/ShauryaRawat10/Data-Engineering/blob/ceb4eeab5d6b840af1d097422f583120fbf303a2/Databricks/Learn/Storage/externaltables_DE1.png)
+
+
 
 
 
