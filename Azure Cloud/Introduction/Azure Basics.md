@@ -43,8 +43,11 @@ Choose redundancy: Locally-redundant storage (LRS)
 
 ![Container creation](https://github.com/ShauryaRawat10/Data-Engineering/blob/85165c6659a4ce1594249498c464a0816dedbbc3/Azure%20Cloud/Introduction/Storage/StorageService_Azure_5.png)
 
+![Container](https://github.com/ShauryaRawat10/Data-Engineering/blob/378f98bbb02b0eb2ac8fb79e6f63b86fb2b86634/Azure%20Cloud/Introduction/Storage/StorageService_Azure_6.png)
 
-
+Copy URL: https://mue10dadls01.blob.core.windows.net/datalake/ShauryaRawat/Azure Course/ActivityLog-01.csv
+Change Access level: Enable Anonymous access
+                     Blob (anonymous read access for blobs only)
 
 
 
