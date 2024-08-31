@@ -10,3 +10,5 @@ WITH (
     DISTRIBUTION = HASH (StoreCode),
     CLUSTERED COLUMNSTORE INDEX
 )
+
+## Copy data tool
