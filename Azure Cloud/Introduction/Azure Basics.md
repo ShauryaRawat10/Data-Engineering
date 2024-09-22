@@ -50,6 +50,24 @@ Change Access level: Enable Anonymous access
                      Blob (anonymous read access for blobs only)
 
 
+**********************************************************************************************************************************
+
+## Azure Data Lake Gen 2 
+Store data - Unstructured, Semi-structured, Structured
+
+To create Azure Gen 2 storage account while creating:
+- Enable hirarchical namespace: It enables files and directory semantics, accelerate big data workloads and enable access control lists (ACLs)
+
+In normal storage there is no option to create directory. While in Gen 2 storage, directory option is there
+
+
+Parquet: Compressed binary file. 
+JSON Size > CSV Size > Parquet Size
+
+
+
+
+
 
 
 
