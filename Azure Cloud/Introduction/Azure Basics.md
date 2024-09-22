@@ -53,7 +53,7 @@ Change Access level: Enable Anonymous access
 **********************************************************************************************************************************
 
 ## Azure Data Lake Gen 2 
-Store data - Unstructured, Semi-structured, Structured
+> Store data - Unstructured, Semi-structured, Structured
 
 To create Azure Gen 2 storage account while creating:
 - Enable hirarchical namespace: It enables files and directory semantics, accelerate big data workloads and enable access control lists (ACLs)
@@ -62,7 +62,7 @@ In normal storage there is no option to create directory. While in Gen 2 storage
 
 
 Parquet: Compressed binary file. 
-JSON Size > CSV Size > Parquet Size
+> JSON Size > CSV Size > Parquet Size
 
 
 ## How to create Azure SQL Database 
@@ -73,49 +73,49 @@ Azure SQL database will create 2 resources -> One Azure SQL Database, One Azure 
 
 - Partition by : Group by gives limitation of aggregating of data
 
-Select productId, OrderQty,
-SUM(OrderQty) OVER (partition by ProductId) as 'total order quantity'
-FROM salesLT.SalesOrderDetail
+> Select productId, OrderQty,
+> SUM(OrderQty) OVER (partition by ProductId) as 'total order quantity'
+> FROM salesLT.SalesOrderDetail
 
 - Lead and Lag function
 
-SELECT ProductID, OrderQty, 
-LAG(OrderQty) OVER (ORDER BY ProductId) AS 'Previous Order Quantity'
-FROM SalesLT.SalesOrderDetail
+> SELECT ProductID, OrderQty, 
+> LAG(OrderQty) OVER (ORDER BY ProductId) AS 'Previous Order Quantity'
+> FROM SalesLT.SalesOrderDetail
 
-SELECT ProductID, OrderQty, 
-LEAD(OrderQty) OVER (ORDER BY ProductId) AS 'Next Order Quantity'
-FROM SalesLT.SalesOrderDetail
+> SELECT ProductID, OrderQty, 
+> LEAD(OrderQty) OVER (ORDER BY ProductId) AS 'Next Order Quantity'
+> FROM SalesLT.SalesOrderDetail
 
 
 - WITH Clause: Comman Table Expression (CTE)
 
-WITH CTE_Products AS
-(
-  SELECT ProductID, OrderQty
-  FROM SalesLT.SalesOrderDetail
-)
-Select * from CTE_Products
+> WITH CTE_Products AS
+> (
+>  SELECT ProductID, OrderQty
+>  FROM SalesLT.SalesOrderDetail
+> )
+> Select * from CTE_Products
 
 - Create table command
 
-Create Table Student
-(
-  StudentID varchar(100) NOT NULL,
-  StudentName varchar(1000),
-  PRIMARY KEY(StudentID)
-)
+> Create Table Student
+> (
+>  StudentID varchar(100) NOT NULL,
+>  StudentName varchar(1000),
+>  PRIMARY KEY(StudentID)
+> )
 
-Insert into Student(StudentID, StudentName) Values('S01', 'Shaurya')
+> Insert into Student(StudentID, StudentName) Values('S01', 'Shaurya')
 
-Create Table Orders
-(
-  OrderID varchar(100) NOT NULL,
-  CustomerID varchar(100),
-  DiscountPercent int,
-  PRIMARY KEY(OrderID),
-  FOREIGN KEY(CustomerID) REFERENCES Student(StudentID)
-)
+> Create Table Orders
+> (
+>  OrderID varchar(100) NOT NULL,
+>  CustomerID varchar(100),
+>  DiscountPercent int,
+>  PRIMARY KEY(OrderID),
+>  FOREIGN KEY(CustomerID) REFERENCES Student(StudentID)
+>)
 
 
 
