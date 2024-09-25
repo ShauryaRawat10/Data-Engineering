@@ -20,4 +20,6 @@
 - Underlying compute is managed for us
 - we are charged for data that is processed by the queries, not for compute
 
+#### Synapse Linked Service - External ADLS Gen 2 storage connectivity
+![Synapse-external-linked-service](https://github.com/ShauryaRawat10/Data-Engineering/blob/c166465f9ed8b1ad1d387624893ca884b1865e9b/Azure%20Cloud/Introduction/Storage/external-storage-connect-synapse.png)
 
