@@ -23,3 +23,14 @@
 #### Synapse Linked Service - External ADLS Gen 2 storage connectivity
 ![Synapse-external-linked-service](https://github.com/ShauryaRawat10/Data-Engineering/blob/c166465f9ed8b1ad1d387624893ca884b1865e9b/Azure%20Cloud/Introduction/Storage/external-storage-connect-synapse.png)
 
+#### Azure Entra Id
+Azure BLOB Data Reader role: To access blob data
+
+SELECT
+    TOP 100 *
+FROM
+    OPENROWSET(
+        BULK 'https://mue10pocadls01.dfs.core.windows.net/datalake/EDW/Asset_Book_Dim/Internal/part-00000-74066bde-5425-4ca0-a187-1db9a37ddc7d.c000.snappy.parquet',
+        FORMAT = 'PARQUET'
+    ) AS [result]
+
