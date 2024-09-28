@@ -173,6 +173,38 @@ WITH
 AS ROWS
 ```
 
+## Dedicated SQL Pool
+- We can host SQL datawarehouse with the help of dedicated SQL pool
+- With Serverless SQL pool, we can define table schema. The data itself resides in external storage
+- But if we need to persist the data in actual tables and query them via SQL, we need SQL data warehouse in place
+- The data warehouse gets dedicated compute and storage. The data in tables are stored in columner format which reduces data storage costs and improves query performnace.
+
+- We also have external tables in Dedicated SQL pool as it could be maybe used as staging table to load data to final table
+
+
+## Types of External Tables
+- Hadoop external table:
+ - Use to read and export data in various data formats such as CSV, Parquet, ORC.
+ - Only available in dedicated SQL pool
+- Native external tables:
+ - Use to read and export data in various data formats sich as CSV and Parquet.
+ - Native external table are available in Serverless SQL pool
+ - They are in public preview in dedicated SQL pool
+  - writing and exporting data using CTEAS and native external tables is only available in serverless sql pool
+
+
+| External table type | Hadoop | Native |
+| ------------- | ---------- | ---------- |
+| Serverless SQL pool | Not available | Available |
+| Dedicated SQL Pool | Available | Only parquet tables are available in public preview |
+
+
+
+
+
+
+
+
 
 
 
