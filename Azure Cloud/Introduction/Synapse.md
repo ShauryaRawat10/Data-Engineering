@@ -38,7 +38,7 @@ Azure BLOB Data Reader role: To access blob data
 
 > Error: File 'https://mue10pocadls01.dfs.core.windows.net/shauryarawat/Input/EmployeeADF.csv' cannot be opened because it does not exist or it is used by another > process.
 
-This happens due to permission issue. Give Azure BLOB reader role in Entra ID
+This happens due to permission issue. Give Azure BLOB reader role in Storage account
 
 ```
 CREATE DATABASE [DEV-Shaurya];
@@ -85,8 +85,60 @@ WITH (
 Select * from ActivityLog
 ```
 
+## External tables Parquet
+
+```
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Password@123'
 
 
+CREATE DATABASE SCOPED CREDENTIAL SasToken
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+SECRET = 'sp=rawlmep&st=2024-09-28T14:02:02Z&se=2024-09-28T22:02:02Z&spr=https&sv=2022-11-02&sr=c&sig=U3l9lYDypTZ1C%2FhuTuJMWFpwqlfjWdgFGAeegEC964g%3D'
+
+
+CREATE EXTERNAL DATA SOURCE srcActivityLogParquet
+WITH (
+    LOCATION = 'https://mue10pocadls01.blob.core.windows.net/shauryarawat/SynapseFiles',
+    CREDENTIAL = SasToken
+)
+
+
+CREATE EXTERNAL FILE FORMAT parquetfileformat
+WITH (
+    FORMAT_TYPE = PARQUET,
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
+)
+
+
+CREATE EXTERNAL TABLE ActivityLogParquet
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    LOCATION = '/ActivityLog01.parquet',
+    DATA_SOURCE = srcActivityLogParquet,
+    FILE_FORMAT = parquetfileformat
+)
+
+
+SELECT * FROM ActivityLogParquet
+
+```
+
+#### Shared Access Signature (SAS) Token
+This can be used without need for BLOB data reader role
+
+![SAS Token](https://github.com/ShauryaRawat10/Data-Engineering/blob/aeb70835fbaaa4fa93b1991ea141fe7b001cdbf3/Azure%20Cloud/Introduction/Storage/SAS_TOKEN.png)
 
 
 
