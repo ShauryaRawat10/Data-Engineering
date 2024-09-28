@@ -195,9 +195,57 @@ AS ROWS
 
 | External table type | Hadoop | Native |
 | ------------- | ---------- | ---------- |
-| Serverless SQL pool | Not available | Available |
-| Dedicated SQL Pool | Available | Only parquet tables are available in public preview |
+| Serverless SQL pool (https) | Not available | Available |
+| Dedicated SQL Pool (abfss) | Available | Only parquet tables are available in public preview |
 
+
+```
+# On dedicated SQL pool connection:
+# Notice that link is changed. It is abfss://containername@storageaccount.blob.core.windows.net
+
+CREATE EXTERNAL DATA SOURCE srcActivityLogUsingDedicated
+WITH 
+(
+    LOCATION = 'abfss://datalake@mue10dadls01.blob.core.windows.net',
+    TYPE = HADOOP
+)
+
+
+CREATE EXTERNAL FILE FORMAT delimitedTextFileFormat 
+WITH 
+(
+    FORMAT_TYPE = DELIMITEDTEXT,
+    FORMAT_OPTIONS(
+        FIELD_TERMINATOR = ',',
+        FIRST_ROW = 2
+    )
+)
+
+
+CREATE EXTERNAL TABLE stg.ActivityLog
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    LOCATION = '/ShauryaRawat/Azure Course/ActivityLog-01.csv',
+    DATA_SOURCE = srcActivityLogUsingDedicated,
+    FILE_FORMAT = delimitedTextFileFormat
+)
+
+
+select * from stg.ActivityLog
+
+```
 
 
 
