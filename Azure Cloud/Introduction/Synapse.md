@@ -26,11 +26,74 @@
 #### Azure Entra Id
 Azure BLOB Data Reader role: To access blob data
 
-SELECT
+```
+ SELECT
     TOP 100 *
-FROM
-    OPENROWSET(
-        BULK 'https://mue10pocadls01.dfs.core.windows.net/datalake/EDW/Asset_Book_Dim/Internal/part-00000-74066bde-5425-4ca0-a187-1db9a37ddc7d.c000.snappy.parquet',
-        FORMAT = 'PARQUET'
-    ) AS [result]
+ FROM
+     OPENROWSET(
+         BULK 'https://mue10pocadls01.dfs.core.windows.net/datalake/EDW/Asset_Book_Dim/Internal/part-00000-74066bde-5425-4ca0-a187-1db9a37ddc7d.c000.snappy.parquet',
+         FORMAT = 'PARQUET'
+     ) AS [result]
+```
+
+> Error: File 'https://mue10pocadls01.dfs.core.windows.net/shauryarawat/Input/EmployeeADF.csv' cannot be opened because it does not exist or it is used by another > process.
+
+This happens due to permission issue. Give Azure BLOB reader role in Entra ID
+
+```
+CREATE DATABASE [DEV-Shaurya];
+
+
+CREATE EXTERNAL DATA SOURCE srcActivityLog
+WITH (
+    LOCATION = 'https://mue10dadls01.blob.core.windows.net/datalake/ShauryaRawat/Azure Course'
+)
+
+
+
+CREATE EXTERNAL FILE FORMAT delimitedTextFileFormat
+WITH (
+    FORMAT_TYPE = DELIMITEDTEXT,
+    FORMAT_OPTIONS(
+        FIELD_TERMINATOR = ',',
+        FIRST_ROW = 2
+    )
+)
+
+
+CREATE EXTERNAL TABLE ActivityLog
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    LOCATION = '/ActivityLog-01.csv',
+    DATA_SOURCE = srcActivityLog,
+    FILE_FORMAT = delimitedTextFileFormat
+)
+
+
+Select * from ActivityLog
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
