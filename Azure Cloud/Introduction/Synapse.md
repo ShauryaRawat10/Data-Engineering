@@ -140,11 +140,38 @@ This can be used without need for BLOB data reader role
 
 ![SAS Token](https://github.com/ShauryaRawat10/Data-Engineering/blob/aeb70835fbaaa4fa93b1991ea141fe7b001cdbf3/Azure%20Cloud/Introduction/Storage/SAS_TOKEN.png)
 
+#### External tables - multiple Parquet files
+
+```
+LOCATION = '/*.parquet'
+```
 
 
+#### OPENROWSET - JSON FILE
 
+- format is csv , jsoncontent column gets all data with each row from each json row
+- use json value function to retrieve columns
 
-
+```
+SELECT 
+JSON_VALUE(jsonContent, '$.Correlationid') AS Correlationid,
+JSON_VALUE(jsonContent, '$.Operationname') AS Operationname,
+JSON_VALUE(jsonContent, '$.Level') AS Level,
+CAST(JSON_VALUE(jsonContent, '$.Time') AS DATETIMEOFFSET) AS Correlationid,
+JSON_VALUE(jsonContent, '$.Subscription') AS Subscription
+FROM OPENROWSET(
+    BULK 'https://mue10dadls01.blob.core.windows.net/datalake/ShauryaRawat/Azure Course/ActivityLog-01.json',
+    FORMAT = 'csv',
+    FIELDTERMINATOR = '0x0b',
+    FIELDQUOTE = '0x0b',
+    ROWTERMINATOR = '0x0a'
+)
+WITH 
+(
+  jsonContent varchar(MAX)   
+)
+AS ROWS
+```
 
 
 
