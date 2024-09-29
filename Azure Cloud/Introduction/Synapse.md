@@ -360,10 +360,19 @@ WITH (
 
 
 
+## Synapse Architecture
 
+![Architecture](https://github.com/ShauryaRawat10/Data-Engineering/blob/549f7dce22923b63fd55fdfec674f6a08c6654b6/Azure%20Cloud/Introduction/Storage/SynapseArchitecture.png)
 
+![DWU](https://github.com/ShauryaRawat10/Data-Engineering/blob/549f7dce22923b63fd55fdfec674f6a08c6654b6/Azure%20Cloud/Introduction/Storage/DWU's.png)
 
+## Types of Table - distributing data across compute and distributions
 
+- For Fact tables - best approach is Hash Key
+- For dimension tables - best approach is Replicated tables
+- For Bulk load to staging - best approach is round robin (default approach)
+
+![Table distributions](https://github.com/ShauryaRawat10/Data-Engineering/blob/664eb63c1dc2e0139452bc97cb9614c73ac0b241/Azure%20Cloud/Introduction/Storage/TanleTypes.png)
 
 
 
