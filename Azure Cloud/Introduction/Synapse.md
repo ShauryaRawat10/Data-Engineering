@@ -350,6 +350,13 @@ WITH (
 )
 ```
 
+## Integrate Section
+
+- Copy data tool
+ - From Data Storage like Gen 2 to Dedicated SQL Pool
+ - From normal SQL database to dedicated SQL warehouse
+- Pipeline
+- Link connection
 
 
 
