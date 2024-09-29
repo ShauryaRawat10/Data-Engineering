@@ -248,6 +248,114 @@ select * from stg.ActivityLog
 ```
 
 
+## External Table - Hidden files and folders
+
+- Use dedicated SQL pool for Hadoop processing
+- The files will be read from directories automatically since we are using DFS
+- The files with '_' prefix will be skipped/hidden
+- Path : abfss://container@storageaccount.dfs.core.windows  (This is dfs , not blob)
+```
+CREATE EXTERNAL DATA SOURCE srcActivityLog
+WITH
+(
+    LOCATION = 'abfss://datalake@mue10dadls01.dfs.core.windows.net/ShauryaRawat/Azure Course',
+    TYPE = HADOOP
+)
+
+
+CREATE EXTERNAL TABLE stg.Readfolderdata
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    LOCATION = '/csv/',
+    DATA_SOURCE = srcActivityLog,
+    FILE_FORMAT = delimitedTextFileFormat
+)
+
+
+SELECT * from stg.Readfolderdata
+```
+
+## Loading data to dedication SQL pool - loading from external table
+- We get many additional options/functionality when we use real table
+- Query performance becomes extremely fast as data resides in table itself in dedicated sql pool
+- If dedicated SQL pool is deleted, tables/data is lost. If paused, it won't be able to query
+
+```
+-- Loading data into a SQL pool using polybase
+CREATE TABLE STG.PoolActivityLog
+WITH 
+(
+    DISTRIBUTION = ROUND_ROBIN
+)
+AS
+SELECT * FROM STG.ActivityLog
+
+
+SELECT * FROM STG.PoolActivityLog
+```
+
+## Copy Command
+```
+-- COPY Command
+CREATE TABLE stg.PoolActivityLog2
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    DISTRIBUTION = ROUND_ROBIN
+)
+
+
+COPY INTO STG.PoolActivityLog2
+FROM 'https://mue10dadls01.blob.core.windows.net/datalake/ShauryaRawat/Azure Course/ActivityLog-01.csv'
+WITH (
+    FILE_TYPE = 'CSV',
+    FIRSTROW = 2
+    -- CREDENTIAL = ''
+)
+
+
+SELECT * FROM STG.PoolActivityLog
+```
+
+#### Copy command - Using Parquet
+```
+COPY INTO STG.PoolActivityLog2
+FROM 'https://mue10dadls01.blob.core.windows.net/datalake/ShauryaRawat/Azure Course/ActivityLog-01.parquet'
+WITH (
+    FILE_TYPE = 'PARQUET'
+    -- CREDENTIAL = ''
+)
+```
+
+
+
+
+
+
+
 
 
 
