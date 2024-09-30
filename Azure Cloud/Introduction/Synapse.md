@@ -426,10 +426,74 @@ WITH (
 - SCD Type 2: Create new row with changes on dates or active/inactive flag indicator
 - SCD Type 3: Create new column for reflecting change. Update will modify column value. Row will be one only
 
+## Indexes on Dedicated SQL Pool
+- Used in RDBMS to improve query performance
+ - Custer columnstore index
+ - heap
+ - custered index / non-clustered index
+
+Clustered Columnstore
+- By default dedicated SQL pool creates clustered columnstore index
+- It creates highest level of data compression and best overall query performance
+ - Columnstore table do not support varchar(max), nvarchar(max), varbinary(max)
+ - Columnstore table is less efficient for transient data. Consider heap or temporary tables instead
+ - Small table will less than 60 million rows. Consider heap tables
+
+```
+create table mytable
+(
+ id int not null,
+ lastname varchar(20),
+ zipcode varchar(6)
+)
+WITH ( CLUSTERED COLUMNSTORE INDEX );
+```
+
+Heap
+- temporarily loading data
+- can be used as staging table
+
+```
+create table mytable
+(
+ id int not null,
+ lastname varchar(20),
+ zipcode varchar(6)
+)
+WITH ( HEAP );
+```
+
+Clustered Index and Non-clustered Index
+- Outperform Custered columnstore index when single row needs to be retrieved quickly
+- Queries which uses highly selective fileter on cluster index column are benefited
+- To improve filter on other columns, consider non-clustered index
+
+## Which method to use for loading data
+- Bulk
+ - Is slower than Copy/Polybase
+ - Bulk insert is good when you have less amount of data to transfer
+ - All commands go through Control Node
+- Polybase gives better performance when you are loading large amounts of data
+ - Polybase, data movement operations go through compute nodes in parallel. It gives better loading time. More compute nodes makes data processing faster
+ - Polybase also allows to create EXTERNAL tables and load them to dedicated SQL pool
+- COPY command
+ - High throughput and goes through compute nodes in dedicated SQL pool
+ - Simple to execute, no need to define EXTERNAL DATA SOURCE, EXTERNAL FILE FORMAT, EXTERNAL TABLE
+
+
+## Partitions in Dedicated SQL Pool
+
+- Table partitions helps to divide your data into smaller groups of data
+- Mostly created on date column
+
+> Since PARTITIONING is done on top of DISTRIBUTIONS, consider making your partition size larger (rows per partiiton). It is more efficient to process
 
 
 
-
+## Spark Pool
+- Spark is used for processing large amounts of data
+- For spark application
+- continued in next sections
 
 
 
