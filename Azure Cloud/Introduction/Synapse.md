@@ -488,6 +488,61 @@ Clustered Index and Non-clustered Index
 
 > Since PARTITIONING is done on top of DISTRIBUTIONS, consider making your partition size larger (rows per partiiton). It is more efficient to process
 
+```
+
+CREATE  TABLE stg.PartitionTable
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    DISTRIBUTION = HASH(Operationname),
+    PARTITION (
+      TIME RANGE RIGHT FOR VALUES
+      ('2024-04-01', '2024-05-01')
+    )
+)
+```
+Swicthing partitions
+```
+CREATE  TABLE stg.PartitionTable2
+(
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    DISTRIBUTION = HASH(Operationname),
+    PARTITION (
+      TIME RANGE RIGHT FOR VALUES
+      ('2024-05-01')
+    )
+);
+
+
+ALTER TABLE PartitionTable SWITCH PARTITION 2 TO PartitionTable2 PARTITION 1;
+- Table1 has 3 partitions (1,2,3)
+- Table2 has 2 partitions (1,2)
+- We moved partition 2 (month of april) to 2nd position of Table2
+
+```
 
 
 ## Spark Pool
