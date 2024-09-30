@@ -374,6 +374,67 @@ WITH (
 
 ![Table distributions](https://github.com/ShauryaRawat10/Data-Engineering/blob/664eb63c1dc2e0139452bc97cb9614c73ac0b241/Azure%20Cloud/Introduction/Storage/TanleTypes.png)
 
+Consider using hash distribution table when:
+- Table size on disk is more than 2 GB
+- Table has frequent insert, update, delete operations
+- Can be applied on multiple columns
+
+Data Skew means data is not evenly distributed across the distributions. So, some distibutions take longer than others when running in parallel
+- Make sure Hash key column has many unique values
+- Make sure hash key column does not have NULLs/ few NULLS
+- Make sure hask key column is not date column
+
+Choose a distribution column that minimizes data movement (queries)
+- It is used in JOIN, GROUP BY, DISTINCT, OVER, HAVING
+- It is not used in WHERE clause
+
+To see how data is distributed:
+```
+DBCC PDW_SHOWSPACEUSED('table_name')
+```
+
+#### Surrogate key for dimension tables
+- To uniquely identify each row
+- Identity(1,1) is used - It does not mean that it will only start from One and increment by One. It is dependent on distribution
+
+```
+CREATE TABLE stg.PoolActivityLogSurrogate
+(
+    Unique_key int IDENTITY(1,1) NOT NULL,
+    [Correlationid] varchar(255),
+    [Operationname] varchar(255),
+    [Status] varchar(255),
+    [Eventcategory] varchar(255),
+    [Level] varchar(255),
+    [Time] varchar(255),
+    [Subscription] varchar(255),
+    [Eventinitiatedby] varchar(255),
+    [Resourcetype] varchar(255),
+    [Resourcegroup] varchar(255),
+    [Resource] varchar(255)
+)
+WITH (
+    DISTRIBUTION = REPLICATE
+)
+
+# This can generate Unique_Key column in any order, but each will be unique as it is based on distributions
+```
+
+
+#### Slowly changing dimensions
+- SCD Type 1: Update the columns directly
+- SCD Type 2: Create new row with changes on dates or active/inactive flag indicator
+- SCD Type 3: Create new column for reflecting change. Update will modify column value. Row will be one only
+
+
+
+
+
+
+
+
+
+
 
 
 
