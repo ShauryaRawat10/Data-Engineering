@@ -25,7 +25,19 @@
 - Derived Column
 - Surrogate
 - Flatten : expand array elements in JSOn documents (Unroll by, unroll root, )
+- Conditional Split : (2 stream , split1 when RG == 'app-grp', split2 - all others are by default here). It is just like router
+- Aggregate (Group by: column1 , Aggregates : column2 = count(*))
 - Source/Sink
+
+## Schema Drift
+- When schema is changing in source, sink auto-map the column to destination
+
+```
+Options in Source
+- Allow Schema Drift
+- Infer drifted column types
+- Validate schema
+```
 
 ## ADF Pipeline Task
 - Delete Task: When you want to get rid of Directories/folder/files after processing
@@ -53,6 +65,63 @@ Logdate = Logdata[1]
 IPAddress = Logdata[9]
 RequestMethod = Logdata[2]
 ```
+
+
+
+## Activity in ADF
+
+- Get Metadata Activity: Get all BLOBS in comtainer (Field List: Child items)
+- For Each Activity: Iterate over the metadata
+
+```
+1. Create metadata Activity to get all files on ADLS
+2. For-each activity to iterate over the files
+   Settings: Items = @activity('GetMetadataBlobs').output.childItems
+3. Add Copy data activity to move data from ADLS to Synapse for each file
+   Source:
+   1. Create Dataset
+      Point to the location of files
+      Add Parameter: Filename
+   2. Source: Filename = @item().Name
+      
+```
+
+- Stored Procedure Activity
+ - It Don't have ability to display output
+
+```
+create procedure stg.GetEmployeeName
+    @p_employeeDimId int 
+AS
+    SELECT distinct(Concat(Emp_First_Name, Emp_Last_Name)) AS Emp_Name
+    FROM stg.employee_dim
+    WHERE Employee_Dim_Id = @p_employeeDimId
+
+
+EXEC stg.GetEmployeeName @p_employeeDimId = 354402
+```
+
+- Lookup Activity
+ - Has Stored Procedure which returns value
+
+```
+1. Create Lookup Activity
+    Stored procedure name : stg.GetEmployeeName
+    Parameter: p_employeeDimId = 354402
+2. Create Set Variable Activity
+   Pipeline Variable
+   Variable Name: P_Name
+   Variable VAlue: @activity('Lookup1').output.firstRow.Emp_Name
+3. Create Set Variable Activity for failure
+   Pipeline Return Variable
+   Variable Name: P_Name String Default
+
+```
+
+
+
+
+
 
 
 
