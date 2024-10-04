@@ -29,4 +29,21 @@
 
 ## ADF Pipeline Task
 - Delete Task: When you want to get rid of Directories/folder/files after processing
--  
+
+## Integration Runtime
+- Files are on azure cloud
+
+## Self Hosted Integration Runtime
+- If the files are on your on-premises network or on a virtual machine
+
+```
+Handson
+1. Create Azure Virtual machine
+2. Install web-server - Internet Information Services
+3. Install Self-Hosted runtime and register it in ADF
+4. Copy Activity - transfer the log data file from web server onto Azure Data Lake
+```
+
+
+
+
