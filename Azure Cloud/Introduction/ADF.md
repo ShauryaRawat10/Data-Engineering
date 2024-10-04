@@ -40,10 +40,19 @@
 Handson
 1. Create Azure Virtual machine
 2. Install web-server - Internet Information Services
-3. Install Self-Hosted runtime and register it in ADF
+3. Install Self-Hosted runtime and register it in ADF (It will give 2 key, copy one and paste in web-server )
 4. Copy Activity - transfer the log data file from web server onto Azure Data Lake
 ```
 
+```
+Derived Column 1
+logdata = split(logdata, " ")  -> Single row will have logdata[1]: value, logdata[2]:value, logdata[3]:value, and so on
+
+Derived Column 2
+Logdate = Logdata[1]
+IPAddress = Logdata[9]
+RequestMethod = Logdata[2]
+```
 
 
 
