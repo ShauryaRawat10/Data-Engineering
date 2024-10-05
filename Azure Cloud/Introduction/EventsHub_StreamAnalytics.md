@@ -19,6 +19,7 @@
 - Event Consumer consumes events from Event Hub
 - Event Consumer is logical grouping of consumers that read data from events hub
 
+Properties
 - Event Retention - Standard (7 days), Premium/Dedicated - 90 days max
 - Ingress - 1 MB per second or 1000 events per second
 - Egress - 2 MB per second or 4096 events per second
