@@ -118,6 +118,34 @@ EXEC stg.GetEmployeeName @p_employeeDimId = 354402
 
 ```
 
+## Triggers
+- Storage Event Trigger
+ - When BLOB data is uploaded/delete we can enable this trigger to execute the pipeline (Provide Subscription/Storageaccountname/Container)
+- Schedule
+- Tumbling Window
+ - Same as Schedule but it only considers events from last window run to next window run (interval based)
+ - We can choose startdate and enddate also
+
+## Git
+- Popular version control to manage different versions of code.
+- Git based repositories for ADF pipelines
+
+```
+Manage -> Git Repository -> Repository Name (Azure DevOps, Github)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
