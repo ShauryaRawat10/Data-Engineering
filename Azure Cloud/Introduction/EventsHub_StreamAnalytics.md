@@ -12,8 +12,8 @@
 
 - Event hub namespace: This is container for multiple event hub
 - Event data is stored accross multiple partitions. It helps increase througput of system
- - Each partition generally sustain 1 MB/s throughput
- - We can use partition key to map events to specific partition
+  - Each partition generally sustain 1 MB/s throughput
+  - We can use partition key to map events to specific partition
 - Each event can have body of events (Metadata - Offset of partitions, stream sequence number)
 - Event Publisher sends data to Events hub
 - Event Consumer consumes events from Event Hub
