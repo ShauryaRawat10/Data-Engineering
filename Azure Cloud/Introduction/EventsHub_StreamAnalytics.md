@@ -234,8 +234,11 @@ Give License adminstrator License
 
 ```
 
-
-
+## ADF
+```
+ADF -> Copy activity -> Wildcard (container/*/*.json) read all files
+                        Merge files
+```
 
 
 
