@@ -242,9 +242,44 @@ ADF -> Copy activity -> Wildcard (container/*/*.json) read all files
 
 
 
+## Lag Function
+- LAG to peak into input stream one event back, retieving the Make value and comparing it to Make value of current event and output the event
+```
+Select
+  MAke,
+  time
+FROM
+  INPUT TIMESTAMP BY Time
+WHERE
+  LAG(Make,1) OVER (LIMIT DURATION(minute,1)) <> make
+```
 
+## DateDiff Function
 
+```
+First query find the maximum time stamp in 10 minutes window, that is timestamp of last event for that window
+Second query joins results of first query with original stream to find event that matches last time stamp in each window
+WiTH LAstInWindow AS
+(
+  SELECT
+    MAX(Time) AS LastEventTime
+  FROM
+    INPUT TIMESTAMP BY Time
+  GROUP BY
+    TUMBLINGWINDOW(minute, 10)
+)
+SELECT
+  INPUT.License_plate,
+  Input.Make,
+  Input.Time
+FROM
+  Input TIMESTAMP BY TIME
+  INNER JOIN LastInWindow
+  ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
+  AND INPUT.Time = LastInWindow.LastEventTime
+```
 
+> Comman Query Function : Go through each for exam
 
 
 
