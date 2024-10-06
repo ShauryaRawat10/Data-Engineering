@@ -226,7 +226,13 @@ function main(flowlog, index){
 ```
 
 
+## Powerbi
 
+```
+Create User for Powerbi
+Give License adminstrator License
+
+```
 
 
 
