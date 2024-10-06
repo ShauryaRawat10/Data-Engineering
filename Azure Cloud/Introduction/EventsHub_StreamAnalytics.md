@@ -201,6 +201,41 @@ Reference Input
  - SQL database
 ```
 
+## Network Security Group (NSG) logs
+- Stream these logs about IP traffic flowing through NSG
+
+```
+Resource Group - 
+1. Virtual Machine - (Ubuntu VM)
+   1. Virtual machine
+   2. Public IP Address
+   3. Network Security Group (has inbound/outbound rules to filter traffic )
+      Create NSG Flow logs (Stream only to Storage account)
+   4. Network Interface
+   5. Network Watcher
+
+```
+
+UDF : 
+```
+function main(flowlog, index){
+   var Items = flowlog.split(',');
+   return Items[index];
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
