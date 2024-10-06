@@ -283,7 +283,10 @@ FROM
 
 
 
+MCQ
 
+2. What would you set as path pattern for ADLS files which are stored inside location-> Staging/  y=2024 / m = 07 / d = 11
+ y={datetime:yyyy}/m={datetime:MM}/d={datetime:dd}
 
 
 
