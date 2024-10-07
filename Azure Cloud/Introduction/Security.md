@@ -300,6 +300,26 @@ DatabricksUKL#secrets/createScope
       Create +
 ```
 
+```
+databricks notebook
+
+%scala
+
+
+val filePath="abfss://data@datalake7000.dfs.core.windows.net/parquet/ActivityLog01.parquet"
+
+val service_credential = dbutils.secrets.get(scope="databricks_keyvault",key="databricksapp")
+
+spark.conf.set("fs.azure.account.auth.type.datalake7000.dfs.core.windows.net", "OAuth")
+spark.conf.set("fs.azure.account.oauth.provider.type.datalake7000.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+spark.conf.set("fs.azure.account.oauth2.client.id.datalake7000.dfs.core.windows.net", "c928bd8e-26cf-46cd-aefb-c4e47ebc1c33")      -- Application ID from Vault
+spark.conf.set("fs.azure.account.oauth2.client.secret.datalake7000.dfs.core.windows.net", service_credential)         -- Embeding of secret
+spark.conf.set("fs.azure.account.oauth2.client.endpoint.datalake7000.dfs.core.windows.net", "https://login.microsoftonline.com/70c0f6d9-7f3b-4425-a6b6-09b47643ec58/oauth2/token")                 -- Directory ID from Key Vault
+
+val df = spark.read.format("parquet").load(filePath)
+                   
+display(df)
+```
 
 
 
