@@ -267,7 +267,18 @@ Secret for Application Object can be stored in Key Vault
 In Notebook, fetch secret from key vault, access datalake via  use of application object
 
 
+Go to Entra ID
+   -> Manage -> App Registrations -> New Registration -> databricksregis (create)
 
+
+Storage Account
+   -> IAM -> Add Role assignment -> Storage BLOB data reader
+                                  -> members (databricksregis) -> assign
+
+Databricks resource -> Certificates and Secrets -> New Client Secret
+                                                   (Secret generated)
+
+Key Vault -> Create a Secret -> New -> Get secret value from databricks
 ```
 
 
