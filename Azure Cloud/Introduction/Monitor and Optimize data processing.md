@@ -130,6 +130,77 @@ Synapse -> Monitor -> SQL requests
 
 
 
+#### Synapse - System Views (Synamic Management Views)
+- Manage all logins
+
+```
+SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed'
+```
+
+- Monitor query execution
+```
+SELECT * FROM sys.dm_pdw_exec_requests
+WHERE status not in ('Compelted', 'Failed', 'cancelled')
+ and session_id <> session_id()
+```
+
+- Query Plan ( select * from sys.dm_pdw_requests_steps where request_id = 'QID####' )
+- data movement on distributed nodes ( Select * FROM sys.dm_pdw_dms_workers where request_id = 'QID####' AND step_index = 2 )
+- Monitor query blocking ( Select * from sys.dm_pdw_waits )
+
+
+#### Workload Management
+- Users are loading data in Synapse/ Users are reading data , we can manage workloads by classfying them accrodingly
+  - Priority resources, Allocate high resources to some users
+ 
+```
+Syanpse resource -> Workload Management -> New Workload group  -> choose (high resources, low resources, medium resources, custom )
+```
+
+
+#### Synapse - Result Set Caching
+- When query is executed multiple times, we can enable cache to save compute
+- following query don't get cached
+  - Built in functions - DateTime.Now(), GetDate()
+  - User defined functions
+  - Row level security
+  - row size larger than 64 KB
+  - large dataset - greater than 10 GB
+
+```
+In Master:
+ALTER TABLE [datapool]
+SET QUERY_STORE = ON;
+
+ALTER TABLE [datapool]
+SET RESULT_SET_CACHING = ON;
+
+In Datapool (dedicated):
+DBSS SHOWRESULTCACHESPACEUSED
+```
+
+
+#### Synapse - Data Skew
+- distributions (Hash) may not be distributed equally accross distributions
+
+```
+DBCC PDW_SHOWSPACEUSED('dbo.PoolActivityLog')  -- Because this was created using Round robin distribution, data is evenly distributed
+```
+
+
+#### Syanpse - Log Analytics
+```
+Go to Synapse -> Diagnostic Setting
+
+Select (SQL Request log, Request Steps Log, Waits Log)
+Destination -> Log Analytics Workspace 
+```
+
+#### Stream Analytics - Optimization
+- Streaming Units (SU) represent compute resources allocated to the job
+- SU % Utilization if goes beyond 80%, then increase SU
+- Backlogged Metrics - If this is non zero value for regular intervals, job can not keep up with streaming events. Scale up Stream Analytics job
+- Partition events to achieve multiple throughput (Input partitions = Output partitions)
 
 
 
