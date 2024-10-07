@@ -279,8 +279,26 @@ Databricks resource -> Certificates and Secrets -> New Client Secret
                                                    (Secret generated)
 
 Key Vault -> Create a Secret -> New -> Get secret value from databricks
+
 ```
 
+```
+Implementation
+
+Key Vault -> Access Configuration -> Permission Model (Change to Vault Access Policy)
+
+Key Vault -> Access Policies -> Craete (Give permission to manage all secrets)
+             Principle -> databricks workspace
+             create
+
+New tab (To create scope)
+DatabricksUKL#secrets/createScope
+      Scopename
+      Manage Principle : Creater
+      DNS name : Vault URL
+      Resource ID : Copy from key vault
+      Create +
+```
 
 
 
