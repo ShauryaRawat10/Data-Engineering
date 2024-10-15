@@ -45,7 +45,13 @@
   - Provides fast, actionable insights (i.e Quality-of-Service, Device monitoring, Recommendations, etc)
 
 
-
+#### Challenges of Stream Processing
+- Processing out-of-order data based on application timestamps
+- Maintaining large amounts of state
+- Processing each event exactly once despite machine failures
+- Handling load imbalance and stragglers
+- Determining how to update output sinks as new events arrive
+- Writing data transactionally to output systems
 
 
 
