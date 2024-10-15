@@ -44,6 +44,13 @@
   - Enables low-latency use cases (i.e real time, or near real time)
   - Provides fast, actionable insights (i.e Quality-of-Service, Device monitoring, Recommendations, etc)
 
+#### Advantages of Stream Processing
+- A more intuitive way of capturing and processing continuous and unbounded data
+- Lower latency for time sensitive applications and use cases
+- Better fault-tolerance through checkpointing
+- Automatic bookkeeping on new data
+- Higher compute utilization and scalability through continuous and incremental processing
+
 
 #### Challenges of Stream Processing
 - Processing out-of-order data based on application timestamps
@@ -52,6 +59,34 @@
 - Handling load imbalance and stragglers
 - Determining how to update output sinks as new events arrive
 - Writing data transactionally to output systems
+
+_____________________________________________________________________________________________________________________________________________________
+
+
+
+#### What is Structured Streaming
+- A scalable, fault tolerant stream processing framework built on Spark SQL engine
+- Uses existing structured APIs (DataFrames, SQL Engine) and provides similar API as batch processing API
+- Includes stream specific features; end-to-end, exactly-once processing, fault tolerance etc
+
+
+#### How Structured Streaming Works?
+Incremental Updates - Data Stream as an unbounded table
+- Streaming data is usually coming in very fast
+- The magic behind Spark Sturtured Streaming: Processing infinite data as an incremental table updates
+
+###### Micro-batch processing
+- Micro-batch execution - Accumulate small batches of data and process each batch in parallel
+- Continous Execution - Continuously listen for new data and process them individually
+
+
+
+
+
+
+
+
+
 
 
 
