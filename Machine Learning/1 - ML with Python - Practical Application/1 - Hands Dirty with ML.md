@@ -42,11 +42,46 @@ Algorithm vs Model
     - eg: Customer classification for online store
     - eg: Clustering of people in social network
   - Semi-Supervised
-- Based on Algorithm Type
+  - Reinforcement Learning;
+    - Learning is carried out by an agent who must interact with env, depending on what they observe, they can perform certain action
+    - Agent may use both supervised and unsupervised to maximize a goal such as Autonomous boats that collects trash
+    - eg: robotics arm that play ping pong
+    - eg: Self driving cars
+    - eg: robotic vaccum cleaner
+- Based on Algorithm Type: How good they are in solving particular problem
+  - Regression
+  - Classification
+  - Dimensionality reduction
+  - Clustering
+  - Time-Series forecasting
+  - Natural language processing
+  - Anomaly detection
+  - Ranking
+  - Recommendation
+  - Data Generation
+  - Optimization
+  - Objects Detection
 
+## Platforms and Libraries 
+- Scikit learn (Linear Regression)
+- Numpy
+- Pandas
+- Scipy
+- Keras
+- Tensorflow
+- Pytorch
+- Matplotlib
 
+Services
+- GCP, Azure, AWS
 
+Notebook
+- Jupyter Notebook
+  - Programming Language: Python, Julia (for high performance ML)
+- Google Collab Notebook
+- Kaggle - Google 
 
+> This folder helps in choosing right algorithm for your kind of problem
 
 
 
