@@ -1,0 +1,93 @@
+# Classification vs Regression vs Forecasting Models
+
+## 1. Classification
+### **Purpose**
+Predict discrete categories or classes.
+
+### **Output**
+Labels (e.g., A, B, or C; Yes or No).
+
+### **Examples**
+- Email spam detection (Spam/Not Spam).
+- Fraud detection (Fraud/Not Fraud).
+- Image recognition (Cat/Dog/Other).
+
+### **Common Algorithms**
+- Logistic Regression.
+- Decision Trees.
+- Random Forests.
+- Support Vector Machines (SVMs).
+- Neural Networks (for complex tasks).
+
+### **Evaluation Metrics**
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- AUC-ROC
+
+---
+
+## 2. Regression
+### **Purpose**
+Predict continuous numeric values.
+
+### **Output**
+A real number.
+
+### **Examples**
+- House price prediction.
+- Stock price estimation.
+- Predicting temperature.
+
+### **Common Algorithms**
+- Linear Regression.
+- Polynomial Regression.
+- Ridge/Lasso Regression.
+- Support Vector Regression (SVR).
+- Neural Networks.
+
+### **Evaluation Metrics**
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- R-squared
+
+---
+
+## 3. Forecasting
+### **Purpose**
+Predict future values based on time-series data.
+
+### **Output**
+Continuous values or categories over time.
+
+### **Examples**
+- Sales forecasting.
+- Weather prediction.
+- Demand forecasting.
+
+### **Special Features**
+- Incorporates time as a factor.
+- Can use historical data trends and seasonality.
+
+### **Common Models**
+- ARIMA (AutoRegressive Integrated Moving Average).
+- SARIMA (Seasonal ARIMA).
+- Prophet (by Facebook).
+- LSTM (Long Short-Term Memory, a type of RNN).
+- Exponential Smoothing.
+
+### **Evaluation Metrics**
+- Mean Absolute Error (MAE).
+- Mean Squared Error (MSE).
+- Mean Absolute Percentage Error (MAPE).
+
+---
+
+## Key Differences
+| Feature              | Classification                | Regression                   | Forecasting                   |
+|----------------------|-------------------------------|-----------------------------|-------------------------------|
+| **Output Type**       | Discrete Labels               | Continuous Values            | Continuous (Time-Series)      |
+| **Data Nature**       | Categorical                  | Numeric                     | Time-dependent Data           |
+| **Examples**          | Fraud Detection, Image Labeling | House Pricing, Stock Valuation | Sales Predictions, Weather Trends |
+| **Time Dependency**   | No                           | No                          | Yes                           |
